@@ -73,7 +73,8 @@ class HttpResponse
       }
 
       std::stringstream ss;
-      ss<<std::hex<<buf.length()<< "\r\n";
+      ss<<std::hex<<buf.length()<< "\r\n";//std::hex表示十六进制输出
+
 
       SendData(ss.str());
       ss.clear();
@@ -87,12 +88,12 @@ class HttpResponse
     bool IsPartDownload(RequestInfo& info)
     {
       auto it = info._hdr_list.find("If-Range");
-      std::cout<<"etag:" <<_etag<<"_date: "<<_date<<std::endl;
+      std::cout<<"HttpRespons 91 : etag:" <<_etag<<"\n_date: "<<_date<<std::endl;
       if(it == info._hdr_list.end())
       {
         return false;//不是断点续传
       }
-      if(it->second == _mtime || it->second == _etag)
+      if(it->second == _mtime || it->second == _etag)//最后一次修改时间，是否被修改
         ;
       else 
         return false;
@@ -117,10 +118,10 @@ class HttpResponse
       std::string range = info._part_list[i];
       if(i == 0)
       {
-        //第一个发送的快，要将bytes=去掉
+        //第一个发送的块，要将bytes=去掉
         range.erase(range.begin(), range.begin() + 6);
       }
-      std::cout << "delete range: " << range << std::endl;
+      std::cout << "HttpResponse 124 : delete range: " << range << std::endl;
 
       size_t pos = range.find("-");
       int64_t start = 0;
@@ -179,15 +180,15 @@ class HttpResponse
         return false;
       }
       lseek(file_fd, start,SEEK_SET);
-      int64_t title_len = end - start + 1;
-      int64_t rlen;
-      int64_t flen = 0;
+      int64_t title_len = end - start + 1;//需要发送多少数据
+      int64_t rlen;//读取出来多少数据
+      int64_t flen = 0;//已经发送了多少数据
       char tmp[MAX_BUFF];
       while((rlen = read(file_fd, tmp, MAX_BUFF)) > 0)
       {
         if(flen + rlen > title_len)
         {
-          send(_cli_sock, tmp, title_len - flen, 0);
+          send(_cli_sock, tmp, title_len - flen, 0);//如果刚刚读取的数据加上你已经发送的数据大于你需要发送的数据
           break;
         }
         else
@@ -238,6 +239,8 @@ class HttpResponse
       close(fd);
       return true;
     }
+
+    
     bool ProcessList(RequestInfo &info)//文件列表功能
     {
       //组织头部
@@ -514,7 +517,7 @@ class HttpResponse
         if(IsPartDownload(info))
         {
         std::cout<< "HttpResponse.cpp 516 : " << info._part << std::endl;
-          for(size_t i = 0; i < info._part; i++)
+          for(size_t i = 0; i < info._part; i++)//_part表示分几次断点续传
           {
             ProcessPartDownload(info, i);
           }

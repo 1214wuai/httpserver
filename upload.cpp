@@ -126,13 +126,13 @@ class Upload
     }
     bool WriteFile(char* buf, int len)
     {
-      fprintf(stderr,"\n\nupload : 129  In WriteFile");
+      //fprintf(stderr,"\n\nupload : 129  In WriteFile");
       if(_file_fd != -1)
       {
         write(_file_fd, buf, len);
       }
-      fprintf(stderr,"\n_file_fd:[%d]  len:[%d]\n",_file_fd,len);
-      fprintf(stderr,"upload : 134  Go Out WriteFile\n\n");
+      //fprintf(stderr,"\n_file_fd:[%d]  len:[%d]\n",_file_fd,len);
+      //fprintf(stderr,"upload : 134  Go Out WriteFile\n\n");
       return true;
     }
   public:
@@ -180,6 +180,7 @@ class Upload
       //blen：buffer长度
       int64_t tlen = 0, blen = 0;
       char buf[MAX_BUFF];
+      ///memset(buf, 0, MAX_BUFF);
       while(tlen < content_len)
       {
         //从管道中将数据读取出来
@@ -221,7 +222,7 @@ class Upload
           flag = MAtchBoundry(buf, blen, &boundry_pos);
           if(flag != BOUNDRY_MIDDLE)
           {
-            fprintf(stderr, "\n\nupload 224 : 没有匹配到middle_boundary\n");
+            //fprintf(stderr, "\n\nupload 224 : 没有匹配到middle_boundary\n");
               break;//没有匹配到middle_boundry就跳出循环
           }
           //匹配成功
@@ -277,7 +278,7 @@ class Upload
           //将类似boundary位置之前的数据写入文件
           //1.移除之前的数据
           //2.剩下的数据不懂，重新接受数据，补全后匹配
-          fprintf(stderr,"\n\nupload : 280 匹配到半个boundary，调用WriteFile\n");
+          //fprintf(stderr,"\n\nupload : 280 匹配到半个boundary，调用WriteFile\n");
           WriteFile(buf, boundry_pos);//boundry_pos指向数据的最后，
           blen -= boundry_pos ;
           memmove(buf, buf + content_pos, blen);
@@ -288,7 +289,7 @@ class Upload
         if(flag == BOUNDRY_NO)
         {
           //直接将buf中所有写入文件
-          fprintf(stderr, "\n\nupload 291 : 没有匹配到boundary,调用WriteFile\n");
+          //fprintf(stderr, "\n\nupload 291 : 没有匹配到boundary,调用WriteFile\n");
           WriteFile(buf, boundry_pos);//boundry_pos指向数据的最后，
           blen = 0;
         }

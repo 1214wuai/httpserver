@@ -16,8 +16,8 @@ public:
   std::unordered_map<std::string, std::string> _hdr_list;//头部当中的键值对  
   struct stat _st; //获取文件信息 
 
-  size_t _part;
-  std::vector<std::string> _part_list;
+  size_t _part;//断点，那些数字有多少个
+  std::vector<std::string> _part_list;//存放range那些数字的
 public:
   std::string _err_code;
 public:
@@ -76,12 +76,12 @@ class HttpRequest
           info.SetError("500");
           return false;
         }
-        //ptr为NULL表示tmp里面没有\r\n\r\n
+        //ptr为NULL表示tmp里面没有\r\n\r\n,表示还没有读到空行
         char* ptr = strstr(tmp, "\r\n\r\n");
         //当读了MAX_HTTPHDR这么多的字节，但是还是没有把头部读完，说明头部过长了
         if ((ptr == NULL) && (ret == MAX_HTTPHDR))
         {
-          info.SetError("413");
+          info.SetError("413");//还没读到空行，头部就已经这么大了，出错4096
           return false;
         }
         //当读的字节小于这么多，并且没有空行出现，说明数据还没有从发送端发送完毕，所以接收缓存区，需要等待一下再次读取数据
@@ -91,6 +91,7 @@ class HttpRequest
           continue;
         }
 
+        //到这儿表示已经读取到头部了
         int hdr_len = ptr - tmp;//请求头的总长度
         _http_header.assign(tmp, hdr_len);
         //tmp数组里放着头部，把头部的hdr_len个字节拷贝到_http_header中
@@ -99,6 +100,7 @@ class HttpRequest
         //LOG("header:%s\n", tmp);
         std::cout<<"HttpRequest 97 接收到的报头"<<std::endl;
         LOG("header:\n%s\n", _http_header.c_str());
+        std::cout<<"\nHttpReques103:tmp: "<<tmp<<std::endl;
         break;
       }
 
@@ -182,7 +184,7 @@ class HttpRequest
       //http请求头解析
       //请求方法 URL 协议版本\r\n
       //key:val\r\nkey:val
-      //解析首行，其余都放到哈希表里
+      //解析首行，其余都放到哈希表里,此处的哈希表就是_hdr_list
       std::vector<std::string> hdr_list;
       Utils:: Split(_http_header, "\r\n",hdr_list);//分割
       if(ParseFirstLine(hdr_list[0], info) == false)//ParseFirstLine(hdr_list[0], info)
@@ -198,10 +200,10 @@ class HttpRequest
         info._hdr_list[hdr_list[i].substr(0,pos)] = hdr_list[i].substr(pos+2);
       }
 
-      std::cout<<"接受到的头部信息\n"<<std::endl;
+      std::cout<<"HttpRequest 203 :接受到的头部信息\n"<<std::endl;
       for(auto it = info._hdr_list.begin(); it != info._hdr_list.end(); it++)
       {
-        std::cout<<"["<<it->first << "] = [" <<it->second << "]"<<std::endl;
+        std::cout<<"["<<it->first << "]= [" <<it->second << "]"<<std::endl;
       }
       std::cout<<"\n\n\n";
 

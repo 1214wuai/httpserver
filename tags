@@ -1,0 +1,133 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BOUNDRY_BACK	upload.cpp	/^  BOUNDRY_BACK  \/\/部分boundary$/;"	e	enum:_boudry_type	file:
+BOUNDRY_FIRST	upload.cpp	/^  BOUNDRY_FIRST,$/;"	e	enum:_boudry_type	file:
+BOUNDRY_LAST	upload.cpp	/^  BOUNDRY_LAST,$/;"	e	enum:_boudry_type	file:
+BOUNDRY_MIDDLE	upload.cpp	/^  BOUNDRY_MIDDLE,$/;"	e	enum:_boudry_type	file:
+BOUNDRY_NO	upload.cpp	/^  BOUNDRY_NO = 0,$/;"	e	enum:_boudry_type	file:
+CGIHandler	httpResponse.hpp	/^    bool CGIHandler(RequestInfo &info)\/\/处理上传响应$/;"	f	class:HttpResponse
+CloseFile	upload.cpp	/^    bool CloseFile()$/;"	f	class:Upload	file:
+CreatFile	upload.cpp	/^    bool CreatFile()$/;"	f	class:Upload	file:
+DigitToStr	utils.hpp	/^    static std::string DigitToStr(int64_t num)$/;"	f	class:Utils
+DigitToStr	utils.hpp	/^    static void DigitToStr(int64_t num, std::string &str)$/;"	f	class:Utils
+DigitToStrFsize	utils.hpp	/^    static void DigitToStrFsize(double num, std::string &str)$/;"	f	class:Utils
+ErrHandler	httpResponse.hpp	/^    bool ErrHandler(RequestInfo &info)\/\/处理错误响应$/;"	f	class:HttpResponse
+FileHandler	httpResponse.hpp	/^    bool FileHandler(RequestInfo &info)\/\/处理文件展示功能$/;"	f	class:HttpResponse
+FileIsDir	httpResponse.hpp	/^    bool FileIsDir(RequestInfo &info)$/;"	f	class:HttpResponse
+GetErrDesc	utils.hpp	/^    static const std::string GetErrDesc(std::string &code)$/;"	f	class:Utils
+GetFileName	upload.cpp	/^    bool GetFileName(char* buf, int* content_pos)$/;"	f	class:Upload	file:
+GetMime	utils.hpp	/^    static void GetMime(const std::string &file, std::string &mime)$/;"	f	class:Utils
+Handler	threadpool.hpp	/^typedef bool (*Handler) (int sock);$/;"	t
+HttpHandler	httpserver.cpp	/^  static bool HttpHandler(int sock)$/;"	f	class:HttpServer	file:
+HttpRequest	httpRequest.hpp	/^    HttpRequest(int sock)$/;"	f	class:HttpRequest
+HttpRequest	httpRequest.hpp	/^class HttpRequest$/;"	c
+HttpResponse	httpResponse.hpp	/^    HttpResponse(int sock):_cli_sock(sock){}$/;"	f	class:HttpResponse
+HttpResponse	httpResponse.hpp	/^class HttpResponse$/;"	c
+HttpServer	httpserver.cpp	/^  HttpServer()$/;"	f	class:HttpServer
+HttpServer	httpserver.cpp	/^class HttpServer$/;"	c	file:
+HttpServerInit	httpserver.cpp	/^  bool HttpServerInit(std::string ip, std::string port)$/;"	f	class:HttpServer
+HttpTask	threadpool.hpp	/^  HttpTask()$/;"	f	class:HttpTask
+HttpTask	threadpool.hpp	/^  HttpTask(int sock, Handler handler)$/;"	f	class:HttpTask
+HttpTask	threadpool.hpp	/^class HttpTask$/;"	c
+InitResponse	httpResponse.hpp	/^    bool InitResponse(RequestInfo req_info)\/\/初始化一些请求的响应信息 $/;"	f	class:HttpResponse
+InitUploadInfo	upload.cpp	/^    bool InitUploadInfo()$/;"	f	class:Upload
+IsPartDownload	httpResponse.hpp	/^    bool IsPartDownload(RequestInfo& info)$/;"	f	class:HttpResponse
+IsStop	threadpool.hpp	/^  bool IsStop()$/;"	f	class:ThreadPool
+LOG	utils.hpp	28;"	d
+MAX_BUFF	utils.hpp	25;"	d
+MAX_HTTPHDR	utils.hpp	32;"	d
+MAX_LISTEN	httpserver.cpp	9;"	d	file:
+MAX_PATH	utils.hpp	27;"	d
+MAX_THREAD	httpserver.cpp	10;"	d	file:
+MAtchBoundry	upload.cpp	/^    int MAtchBoundry(char* buf, size_t blen, int* boundry_pos)$/;"	f	class:Upload	file:
+MakeETag	utils.hpp	/^    static void MakeETag(int64_t ino, int64_t size, int64_t mtime, std::string &etag)$/;"	f	class:Utils
+ParseFirstLine	httpRequest.hpp	/^    bool ParseFirstLine(std::string &line, RequestInfo &info)$/;"	f	class:HttpRequest
+ParseHttpHeader	httpRequest.hpp	/^    bool ParseHttpHeader(RequestInfo &info)$/;"	f	class:HttpRequest
+PathIsLegal	httpRequest.hpp	/^    bool PathIsLegal(std::string &path, RequestInfo &info)$/;"	f	class:HttpRequest
+PopTask	threadpool.hpp	/^  bool PopTask(HttpTask& tt)$/;"	f	class:ThreadPool
+ProcessCGI	httpResponse.hpp	/^    bool ProcessCGI(RequestInfo &info)\/\/cgi请求处理$/;"	f	class:HttpResponse
+ProcessFile	httpResponse.hpp	/^    bool ProcessFile(RequestInfo &info)\/\/文件下载功能$/;"	f	class:HttpResponse
+ProcessList	httpResponse.hpp	/^    bool ProcessList(RequestInfo &info)\/\/文件列表功能$/;"	f	class:HttpResponse
+ProcessPartDownload	httpResponse.hpp	/^    bool ProcessPartDownload(RequestInfo& info, int i)$/;"	f	class:HttpResponse
+ProcessUpload	upload.cpp	/^    bool ProcessUpload()$/;"	f	class:Upload
+PushTask	threadpool.hpp	/^  bool PushTask(HttpTask& tt)$/;"	f	class:ThreadPool
+QueueIsEmpty	threadpool.hpp	/^  bool QueueIsEmpty()$/;"	f	class:ThreadPool
+QueueLock	threadpool.hpp	/^  void QueueLock()$/;"	f	class:ThreadPool
+QueueUnLock	threadpool.hpp	/^  void QueueUnLock()$/;"	f	class:ThreadPool
+RecvHttpHeader	httpRequest.hpp	/^    bool RecvHttpHeader(RequestInfo& info)$/;"	f	class:HttpRequest
+RequestInfo	httpRequest.hpp	/^class RequestInfo$/;"	c
+RequestIsCGI	httpRequest.hpp	/^  bool RequestIsCGI()$/;"	f	class:RequestInfo
+Run	threadpool.hpp	/^  void Run()$/;"	f	class:HttpTask
+SendCData	httpResponse.hpp	/^    bool SendCData(const std::string& buf)$/;"	f	class:HttpResponse
+SendData	httpResponse.hpp	/^    bool SendData(std::string buf)$/;"	f	class:HttpResponse
+SetError	httpRequest.hpp	/^  void SetError(const std::string& code)$/;"	f	class:RequestInfo
+SetHttpTask	threadpool.hpp	/^  void SetHttpTask(int sock, Handler handler)$/;"	f	class:HttpTask
+Split	utils.hpp	/^    static int Split(std::string& src, const std::string &seg, std::vector<std::string> &list)   $/;"	f	class:Utils
+Start	httpserver.cpp	/^  bool Start()$/;"	f	class:HttpServer
+StrToDig	utils.hpp	/^    static int64_t StrToDig(const std::string &str)$/;"	f	class:Utils
+TaskHandler	threadpool.hpp	/^  Handler TaskHandler;$/;"	m	class:HttpTask
+ThreadExit	threadpool.hpp	/^  void ThreadExit()$/;"	f	class:ThreadPool
+ThreadPool	threadpool.hpp	/^  ThreadPool(int max)$/;"	f	class:ThreadPool
+ThreadPool	threadpool.hpp	/^class ThreadPool$/;"	c
+ThreadPoolInit	threadpool.hpp	/^  bool ThreadPoolInit()$/;"	f	class:ThreadPool
+ThreadPoolStop	threadpool.hpp	/^  bool ThreadPoolStop()$/;"	f	class:ThreadPool
+ThreadWait	threadpool.hpp	/^  void ThreadWait()$/;"	f	class:ThreadPool
+ThreadWakeUpAll	threadpool.hpp	/^  void ThreadWakeUpAll()$/;"	f	class:ThreadPool
+ThreadWakeUpOne	threadpool.hpp	/^  void ThreadWakeUpOne()$/;"	f	class:ThreadPool
+TimeToGMT	utils.hpp	/^    static void TimeToGMT(time_t t, std::string &gmt)$/;"	f	class:Utils
+Upload	upload.cpp	/^    Upload():_file_fd(-1){}$/;"	f	class:Upload
+Upload	upload.cpp	/^class Upload$/;"	c	file:
+Usage	httpserver.cpp	/^void Usage(const std::string proc)$/;"	f
+Utils	utils.hpp	/^class Utils{                                                                                     $/;"	c
+WWWROOT	utils.hpp	26;"	d
+WriteFile	upload.cpp	/^    bool WriteFile(char* buf, int len)$/;"	f	class:Upload	file:
+_HTTP_REPONSE_HPP_	httpResponse.hpp	2;"	d
+_HTTP_REQUEST_HPP_	httpRequest.hpp	2;"	d
+_IP_	httpserver.cpp	11;"	d	file:
+_THREADPOOL_HPP_	threadpool.hpp	2;"	d
+__M_UTILLS_H__	utils.hpp	2;"	d
+_boudry_type	upload.cpp	/^enum _boudry_type{$/;"	g	file:
+_cli_sock	httpRequest.hpp	/^    int _cli_sock;$/;"	m	class:HttpRequest
+_cli_sock	httpResponse.hpp	/^    int _cli_sock;$/;"	m	class:HttpResponse
+_cli_sock	threadpool.hpp	/^  int _cli_sock;$/;"	m	class:HttpTask
+_cond	threadpool.hpp	/^  pthread_cond_t _cond;$/;"	m	class:ThreadPool
+_cur_thr	threadpool.hpp	/^  int _cur_thr;$/;"	m	class:ThreadPool
+_date	httpResponse.hpp	/^    std::string _date; \/\/系统响应时间$/;"	m	class:HttpResponse
+_err_code	httpRequest.hpp	/^  std::string _err_code;$/;"	m	class:RequestInfo
+_etag	httpResponse.hpp	/^    std::string _etag;\/\/是否被修改$/;"	m	class:HttpResponse
+_f_boundry	upload.cpp	/^    std::string _f_boundry;$/;"	m	class:Upload	file:
+_file_fd	upload.cpp	/^    int _file_fd;$/;"	m	class:Upload	file:
+_file_name	upload.cpp	/^    std::string _file_name;$/;"	m	class:Upload	file:
+_filesize	httpResponse.hpp	/^    std::string _filesize;\/\/文件大小$/;"	m	class:HttpResponse
+_hdr_list	httpRequest.hpp	/^  std::unordered_map<std::string, std::string> _hdr_list;\/\/头部当中的键值对  $/;"	m	class:RequestInfo
+_http_header	httpRequest.hpp	/^    std::string _http_header;$/;"	m	class:HttpRequest
+_is_stop	threadpool.hpp	/^  bool _is_stop;$/;"	m	class:ThreadPool
+_l_boundry	upload.cpp	/^    std::string _l_boundry;$/;"	m	class:Upload	file:
+_m_boundry	upload.cpp	/^    std::string _m_boundry;$/;"	m	class:Upload	file:
+_max_thr	threadpool.hpp	/^  int _max_thr;$/;"	m	class:ThreadPool
+_method	httpRequest.hpp	/^  std::string _method;\/\/请求方法$/;"	m	class:RequestInfo
+_mime	httpResponse.hpp	/^    std::string _mime;\/\/文件类型$/;"	m	class:HttpResponse
+_mtime	httpResponse.hpp	/^    std::string _mtime;\/\/最后一次修改时间$/;"	m	class:HttpResponse
+_mutex	threadpool.hpp	/^  pthread_mutex_t _mutex;$/;"	m	class:ThreadPool
+_part	httpRequest.hpp	/^  size_t _part;$/;"	m	class:RequestInfo
+_part_list	httpRequest.hpp	/^  std::vector<std::string> _part_list;$/;"	m	class:RequestInfo
+_path_info	httpRequest.hpp	/^  std::string _path_info;\/\/资源路径$/;"	m	class:RequestInfo
+_path_phys	httpRequest.hpp	/^  std::string _path_phys;\/\/资源实际路径  $/;"	m	class:RequestInfo
+_query_string	httpRequest.hpp	/^  std::string _query_string;\/\/查询字符串 $/;"	m	class:RequestInfo
+_req_info	httpRequest.hpp	/^    RequestInfo _req_info;$/;"	m	class:HttpRequest
+_serv_sock	httpserver.cpp	/^  int _serv_sock;$/;"	m	class:HttpServer	file:
+_st	httpRequest.hpp	/^  struct stat _st; \/\/获取文件信息 $/;"	m	class:RequestInfo	typeref:struct:RequestInfo::stat
+_task_queue	threadpool.hpp	/^  std::queue<HttpTask> _task_queue;\/\/任务队列$/;"	m	class:ThreadPool
+_tp	httpserver.cpp	/^  ThreadPool* _tp;$/;"	m	class:HttpServer	file:
+_version	httpRequest.hpp	/^  std::string _version;\/\/协议版本$/;"	m	class:RequestInfo
+content_len	upload.cpp	/^    int64_t content_len;$/;"	m	class:Upload	file:
+g_err_desc	utils.hpp	/^std::unordered_map<std::string, std::string> g_err_desc = {$/;"	v
+g_mime_type	utils.hpp	/^std::unordered_map<std::string, std::string> g_mime_type = {$/;"	v
+main	httpserver.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	upload.cpp	/^int main()$/;"	f
+thr_start	threadpool.hpp	/^  static void* thr_start(void* arg)$/;"	f	class:ThreadPool
+~ThreadPool	threadpool.hpp	/^  ~ThreadPool()$/;"	f	class:ThreadPool

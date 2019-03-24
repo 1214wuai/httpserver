@@ -50,7 +50,7 @@ private:
   //当前线程池中的线程数
   int _cur_thr;
   bool _is_stop;
-  std::queue<HttpTask> _task_queue;
+  std::queue<HttpTask> _task_queue;//任务队列
   pthread_mutex_t _mutex;
   pthread_cond_t _cond;
 
@@ -109,13 +109,15 @@ private:
   {
    while(1)
    {
-    ThreadPool *tp  = (ThreadPool*)arg;
+    ThreadPool *tp  = (ThreadPool*)arg;//此处的arg是this，this指向自己这个线程池类
     tp->QueueLock();
     while (tp->QueueIsEmpty())
     {
       tp->ThreadWait();
     }
 
+    //此时任务队列中已经有任务了，因为在唤醒线程之前，
+    //就把任务放到任务队列中了。
     HttpTask ht;
     tp->PopTask(ht);
     tp->QueueUnLock();
@@ -142,6 +144,8 @@ public:
   //完成线程创建，互斥锁/条件变量初始化
   bool ThreadPoolInit()
   {
+    pthread_mutex_init(&_mutex, NULL);
+    pthread_cond_init(&_cond, NULL);
     pthread_t tid;
     for (int i = 0; i < _max_thr; i++)
     {
@@ -154,8 +158,6 @@ public:
       pthread_detach(tid);
       _cur_thr++;
     }
-    pthread_mutex_init(&_mutex, NULL);
-    pthread_cond_init(&_cond, NULL);
 
     return true;
   }

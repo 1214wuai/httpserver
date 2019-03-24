@@ -141,8 +141,12 @@ public:
           return false;
         }
         std::cout << "new connect!" << std::endl;
+        
+        //创建任务类
         HttpTask ht;
         ht.SetHttpTask(new_sock, HttpHandler);
+        
+        //把这个任务push到任务队列中
         _tp->PushTask(ht);
       }
 
