@@ -194,7 +194,7 @@ int main(int argc, char* argv[])
 #endif
 
 
- if(server.Start() == false)
+ if(server.Start() == false)//asdasd
  {
    return -1;
  }
